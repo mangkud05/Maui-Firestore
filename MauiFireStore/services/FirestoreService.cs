@@ -38,7 +38,7 @@ namespace MauiFireStore.services;
         try
         {
             await SetupFireStore();
-            var data = await db.Collection("Samples").GetSnapshotAsync();
+            var data = await db.Collection("Students").GetSnapshotAsync();
             var samples = data.Documents.Select(doc =>
             {
                 var sample = new SampleModel();
@@ -70,7 +70,7 @@ namespace MauiFireStore.services;
                 // Add more fields as needed
             };
 
-            await db.Collection("Samples").AddAsync(sampleData);
+            await db.Collection("Students").AddAsync(sampleData);
         }
         catch (Exception ex)
         {
@@ -114,7 +114,7 @@ namespace MauiFireStore.services;
             await SetupFireStore();
 
             // Reference the document by its Id and delete it
-            var docRef = db.Collection("Samples").Document(id);
+            var docRef = db.Collection("Students").Document(id);
             await docRef.DeleteAsync();
 
             StatusMessage = "Sample successfully deleted!";
